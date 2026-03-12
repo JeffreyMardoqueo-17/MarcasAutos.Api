@@ -1,4 +1,10 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MarcasAutos.Api.Data;
+using MarcasAutos.Api.Interfaces;
+using MarcasAutos.Api.Repositories;
+using MarcasAutos.Api.Services;
+using MarcasAutos.Api.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -13,7 +19,12 @@ builder.Services.AddSingleton(dbConnectionSingleton);
 builder.Services.AddDbContext<AppDbContext>((_, options) =>
     options.UseNpgsql(dbConnectionSingleton.ConnectionString));
 
+builder.Services.AddScoped<IMarcaAutoRepository, MarcaAutoRepository>();
+builder.Services.AddScoped<IMarcaAutoService, MarcaAutoService>();
+
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateMarcaAutoRequestValidator>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -21,7 +32,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "MarcasAutos API",
         Version = "v1",
-        Description = "API para gestion de marcas de autos con EF Core y PostgreSQL."
+        Description = "API para gestion de marcas de autos con EF Core y PostgreSQL. Peticiones Get y Post "
     });
 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -69,7 +80,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapGet("/", () => Results.Redirect("/swagger"));
+app.MapGet("/", () => Results.Redirect("/swagger/index.html"))
+    .ExcludeFromDescription();
 app.MapControllers();
 
 app.Run();

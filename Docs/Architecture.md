@@ -1,55 +1,34 @@
-## Arquitectura usada 
-```
-MarcasAutos
-│
+# Arquitectura usada
+
+El proyecto esta organizado en capas para separar responsabilidades y mantener una estructura limpia.
+
+
+## Estructura general
+
+```text
+MarcasAutos.API
 ├── MarcasAutos.Api
-│   │
 │   ├── Controllers
-│   │   └── MarcasAutosController.cs
-│   │
-│   ├── Data
-│   │   ├── AppDbContext.cs
-│   │   └── DbInitializer.cs
-│   │
-│   ├── Entities
-│   │   └── MarcaAuto.cs
-│   │
-│   ├── Interfaces
-│   │   ├── IMarcaAutoRepository.cs
-│   │   └── IMarcaAutoService.cs
-│   │
+│   ├── Services
 │   ├── Repositories
-│   │   └── MarcaAutoRepository.cs
-│   │
-│   ├── Services
-│   │   └── MarcaAutoService.cs
-│   │
-│   ├── Configurations
-│   │   └── MarcaAutoConfiguration.cs
-│   │
-│   ├── Migrations
-│   │
-│   ├── appsettings.json
-│   ├── appsettings.Development.json
-│   ├── Program.cs
-│   └── Dockerfile
-│
-├── MarcasAutos.Tests
-│   │
-│   ├── Controllers
-│   │   └── MarcasAutosControllerTests.cs
-│   │
-│   ├── Services
-│   │   └── MarcaAutoServiceTests.cs
-│   │
+│   ├── Interfaces
 │   ├── Data
-│   │   └── InMemoryDbContextFactory.cs
-│   │
-│   └── MarcasAutos.Tests.csproj
-│
-├── Docs
-├── compose.yml
-├── .gitignore
-├── README.md
-└── MarcasAutos.sln
+│   ├── Entities
+│   ├── Models
+│   ├── Validators
+│   ├── Configurations
+│   └── Migrations
+├── MarcasAutos.Tests
+│   ├── Controllers
+│   ├── Services
+│   ├── Repositories
+│   ├── Validators
+│   └── TestInfrastructure
+└── Docs
 ```
+
+## Relacion con los otros documentos
+
+- Configuracion de base de datos y docker: [Setup-PostgreSQL-EFCore.md](Setup-PostgreSQL-EFCore.md)
+- Estrategia de pruebas por capa: [test.md](test.md)
+- Vista general del proyecto: [../README.md](../README.md)
