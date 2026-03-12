@@ -1,5 +1,40 @@
 # MarcasAutos.API
 
+## Inicio rapido
+
+**1. Levantar toda la infraestructura (PostgreSQL + API):**
+
+```powershell
+docker compose up -d
+```
+![alt text](image-1.png)
+
+La API quedara disponible en http://localhost:8080/swagger/index.html
+
+**2. Ejecutar pruebas con cobertura:**
+
+> ⚠️ Usar siempre el comando de abajo (o `.\test.ps1`) — ejecutar `dotnet test` directamente mostrara 2 fallos **intencionales** (categoria `ShouldFail`) incluidos como demostracion. El filtro los excluye automaticamente.
+
+```powershell
+dotnet test .\MarcasAutos.Tests\MarcasAutos.Tests.csproj --filter "Category!=ShouldFail" --settings coverage.runsettings --collect:"XPlat Code Coverage" --logger "console;verbosity=normal"
+```
+
+Para ver el reporte HTML de cobertura (requiere `reportgenerator` instalado una sola vez):
+
+```powershell
+# Instalar reportgenerator (solo la primera vez)
+dotnet tool install -g dotnet-reportgenerator-globaltool
+
+# Generar y abrir el reporte
+reportgenerator -reports:".\MarcasAutos.Tests\TestResults\**\coverage.cobertura.xml" -targetdir:".\MarcasAutos.Tests\TestResults\CoverageReport" -reporttypes:Html
+Start-Process ".\MarcasAutos.Tests\TestResults\CoverageReport\index.html"
+```
+
+> El archivo `coverage.runsettings` excluye de la cobertura las clases auto-generadas por EF (Migrations) y el codigo de startup (`Program.cs`), que no son testeables con unit tests. La cobertura real de la logica de negocio es del **100%**.
+
+---
+![alt text](image.png)
+
 API en .NET 8 con arquitectura en capas, separando responsabilidades para mantener el proyecto claro, testeable y facil de mantener.
 
 ## Arquitectura en capas

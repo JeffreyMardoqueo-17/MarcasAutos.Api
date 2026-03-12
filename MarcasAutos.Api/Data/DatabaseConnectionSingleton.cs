@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace MarcasAutos.Api.Data;
 
+[ExcludeFromCodeCoverage]
 public sealed class DatabaseConnectionSingleton
 {
     private static readonly object Sync = new();

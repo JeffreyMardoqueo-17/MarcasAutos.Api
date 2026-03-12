@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat Code Coverage">
+        <Configuration>
+          <!-- Excluir archivos auto-generados y codigo de infraestructura/startup -->
+          <ExcludeByFile>**/Migrations/*.cs,**/Program.cs</ExcludeByFile>
+          <!-- Respetar el atributo [ExcludeFromCodeCoverage] -->
+          <ExcludeByAttribute>ExcludeFromCodeCoverage,GeneratedCode</ExcludeByAttribute>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
