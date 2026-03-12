@@ -19,6 +19,8 @@ Para ver el detalle completo de arquitectura y estructura:
 - Arquitectura por capas: [Docs/Architecture.md](Docs/Architecture.md)
 - Configuracion PostgreSQL + EF Core + Docker: [Docs/Setup-PostgreSQL-EFCore.md](Docs/Setup-PostgreSQL-EFCore.md)
 - Estrategia y ejecucion de pruebas: [Docs/test.md](Docs/test.md)
+## 📦 Despliegue
+- Vista general del despliegue: [Docs/Despliegue.md](Docs/Despliegue.md)
 
 ## Requisitos
 
