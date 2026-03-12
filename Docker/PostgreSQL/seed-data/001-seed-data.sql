@@ -1,0 +1,2 @@
+---Aqui mas adelante por ejemplo pudiera agregar cosas cuando se inicie todo
+--pero como lo hare ahorita con EF core, pero por si nousara migracoines por eso lo deje como ejemplo anda amas

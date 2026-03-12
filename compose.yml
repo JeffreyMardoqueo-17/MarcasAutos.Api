@@ -1,0 +1,42 @@
+services:
+  postgres:
+    build:
+      context: ./Docker/PostgreSQL
+      dockerfile: Dockerfile
+    container_name: marcasautos_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: marcasautos_db
+      POSTGRES_USER: marcasautos_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-marcasautos_pass}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marcasautos_user -d marcasautos_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: MarcasAutos.Api/Dockerfile
+    container_name: marcasautos_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: marcasautos_db
+      DB_USER: marcasautos_user
+      DB_PASSWORD: ${DB_PASSWORD:-marcasautos_pass}
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
