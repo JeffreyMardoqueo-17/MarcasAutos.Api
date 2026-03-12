@@ -9,7 +9,7 @@ El despliegue fue realizado en un **servidor Linux Ubuntu**, utilizando un **dom
 
 <img width="3839" height="1977" alt="image" src="https://github.com/user-attachments/assets/d9137a8b-c45b-467a-92d9-86a541d20746" />
 
-<img width="3064" height="1758" alt="image" src="https://github.com/user-attachments/assets/929b3c5b-b476-4bcc-b053-2ea2dc0595dd" />
+<img width="2470" height="1405" alt="image" src="https://github.com/user-attachments/assets/1e61f86d-eb4c-47c1-92a2-6e41f4ca9e49" />
 
 
 El despliegue lo hice en una conferencia en Teams, en el cual el Adminsitrador compartio pantalla y yo controle y realice los procesos para el depsliegue. 
