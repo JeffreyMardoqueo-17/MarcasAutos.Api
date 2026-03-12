@@ -19,16 +19,16 @@ dotnet add "MarcasAutos.Api/MarcasAutos.Api.csproj" package Microsoft.EntityFram
 dotnet add "MarcasAutos.Api/MarcasAutos.Api.csproj" package Npgsql.EntityFrameworkCore.PostgreSQL --version 8.0.8
 ```
 
-## 2) Donde se configuro la conexion
+## 2) ¿Donde configure la conexion a la BD?
 
-- Se define por variables de entorno en `compose.yml`:
+- Lo defini por variables de entorno en `compose.yml`:
   - `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`
 - `appsettings.json` y `appsettings.Development.json` se dejaron sin secretos en `ConnectionStrings:DefaultConnection`.
 - La cadena final se construye en `MarcasAutos.Api/Data/DatabaseConnectionSingleton.cs`.
 
 ## 3) Patron Singleton para conexion
 
-Se implemento un singleton explicito en
+Implemente un singleton explicito en
 
 - `MarcasAutos.Api/Data/DatabaseConnectionSingleton.cs`
 
@@ -81,7 +81,7 @@ Archivos clave
 - `Docker/PostgreSQL/seed-data/001-seed-data.sql`
 - `start-compose.ps1`
 
-Nota : 
+Nota 
 - El archivo ``compose.yml`` se llama asi porque segun la documentacion asi puede llamarse ahora
 
 

@@ -22,9 +22,7 @@ public class MarcaAutoService : IMarcaAutoService
     public async Task<MarcaAuto> CreateAsync(MarcaAuto marcaAuto, CancellationToken cancellationToken = default)
     {
         var nombreNormalizado = marcaAuto.Nombre.Trim();
-        var paisOrigenNormalizado = string.IsNullOrWhiteSpace(marcaAuto.PaisOrigen)
-            ? null
-            : marcaAuto.PaisOrigen.Trim();
+        var paisOrigenNormalizado = marcaAuto.PaisOrigen?.Trim();
 
         if (await _marcaAutoRepository.ExistsByNombreAsync(nombreNormalizado, cancellationToken))
             throw new BusinessRuleException("Ya existe una marca con el mismo nombre.");

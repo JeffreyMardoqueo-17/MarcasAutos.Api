@@ -14,7 +14,7 @@ public class CreateMarcaAutoRequestValidator : AbstractValidator<CreateMarcaAuto
 
         RuleFor(x => x.PaisOrigen)
             .MaximumLength(100).WithMessage("El pais de origen no puede exceder 100 caracteres.")
-            .Must(pais => string.IsNullOrWhiteSpace(pais) || pais!.Length >= 2)
-            .WithMessage("El pais de origen debe tener al menos 2 caracteres cuando se envia.");
+            .Must(pais => pais == null || pais.Trim().Length >= 2)
+            .WithMessage("El pais de origen debe tener al menos 2 caracteres validos cuando se envia.");
     }
 }
